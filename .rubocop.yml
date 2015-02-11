@@ -1,0 +1,14 @@
+AllCops:
+  Exclude:
+    - '**/Gemfile'
+    - '**/*.gemspec'
+
+Style/RegexpLiteral:
+  Exclude:
+    - '**/Guardfile'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*.rb'
+    - lib/chef-vault/test_fixtures/version.rb
+    - lib/hoe/markdown.rb
