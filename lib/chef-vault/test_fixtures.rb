@@ -6,7 +6,7 @@ require 'little-plugger'
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    VERSION = '0.1.0'
+    VERSION = '0.1.1'
 
     extend LittlePlugger path: 'chef-vault/test_fixtures',
                          module: ChefVault::TestFixtures
@@ -18,7 +18,7 @@ class ChefVault
     # @return [Module] the RSpec shared context
     class << self
       # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-      def shared_context
+      def rspec_shared_context
         @context ||= begin
           load_plugins
           Module.new do

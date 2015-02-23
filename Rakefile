@@ -5,6 +5,7 @@ begin
   require 'hoe/markdown'
   Hoe.plugin :gemspec
   Hoe.plugin :markdown
+  Hoe.plugins.delete :test
   Hoe.spec 'chef-vault-testfixtures' do |s|
     s.version = ChefVault::TestFixtures::VERSION
     developer 'James FitzGibbon', 'james.i.fitzgibbon@nordstrom.com'
@@ -66,9 +67,9 @@ begin
     Rake::Task[:test].invoke
   end
 
-  # test expands to spec and features
+  # test is an alias for spec
   desc 'runs unit tests'
-  task test: [:spec]
+  task test: :spec
 
   # default is to test everything
   desc 'runs all tests'

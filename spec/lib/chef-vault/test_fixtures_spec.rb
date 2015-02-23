@@ -29,7 +29,7 @@ class ChefVault
 end
 
 RSpec.describe ChefVault::TestFixtures do
-  include ChefVault::TestFixtures.shared_context
+  include ChefVault::TestFixtures.rspec_shared_context
 
   before do
     ChefVault::TestFixtures.clear_plugins
@@ -48,14 +48,14 @@ RSpec.describe ChefVault::TestFixtures do
     end
 
     it 'can create an RSpec shared context' do
-      sc = ChefVault::TestFixtures.shared_context
+      sc = ChefVault::TestFixtures.rspec_shared_context
       expect(sc).to be_a(Module)
       expect(sc).to be_a(RSpec::Core::SharedContext)
     end
 
     it 'should only create one shared context' do
-      mod1 = ChefVault::TestFixtures.shared_context
-      mod2 = ChefVault::TestFixtures.shared_context
+      mod1 = ChefVault::TestFixtures.rspec_shared_context
+      mod2 = ChefVault::TestFixtures.rspec_shared_context
       expect(mod2).to be(mod1)
     end
 
