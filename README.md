@@ -2,11 +2,16 @@
 
 * home :: https://github.com/Nordstrom/chef-vault-testfixtures
 * license :: [Apache2](http://www.apache.org/licenses/LICENSE-2.0)
+* gem version :: [![Gem Version](https://badge.fury.io/rb/chef-vault-testfixtures.png)](http://badge.fury.io/rb/chef-vault-testfixtures)
+* build status :: [![Build Status](https://travis-ci.org/Nordstrom/chef-vault-testfixtures.png?branch=master)](https://travis-ci.org/Nordstrom/chef-vault-testfixtures)
+* code climate :: [![Code Climate](https://codeclimate.com/github/Nordstrom/chef-vault-testfixtures/badges/gpa.svg)](https://codeclimate.com/github/Nordstrom/chef-vault-testfixtures)
 
 ## DESCRIPTION
 
 chef-vault-testfixtures provides an RSpec shared context that
 dynamically stubs access to chef-vault encrypted data bags.
+
+## USAGE
 
 chef-vault is a gem to manage distribution and control of keys to
 decrypt Chef encrypted data bags.
@@ -32,7 +37,7 @@ Attempts to access secrets that would not be available to a node
 during a real chef-client run will not be mocked, which will cause
 the double to raise an 'unexpected message received' error.
 
-## SYNOPSIS
+## USAGE
 
 In the file `spec/support/chef-vault/test_fixtures/foo.rb`:
 

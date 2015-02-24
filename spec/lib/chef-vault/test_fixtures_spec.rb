@@ -79,6 +79,12 @@ RSpec.describe ChefVault::TestFixtures do
       expect(baz).to eq(2)
     end
 
+    it 'it should allow access to foo/bar via a symbol instead of a string' do
+      ChefVault::TestFixtures.plugins
+      baz = ChefVault::Item.load(:foo, 'bar')['baz']
+      expect(baz).to eq(2)
+    end
+
     it 'it should stub the bar/foo vault item' do
       ChefVault::TestFixtures.plugins
       baz = ChefVault::Item.load('bar', 'foo')['baz']
@@ -89,6 +95,13 @@ RSpec.describe ChefVault::TestFixtures do
       ChefVault::TestFixtures.plugins
       item1 = ChefVault::Item.load('bar', 'foo')
       item2 = ChefVault::Item.load('bar', 'gzonk')
+      expect(item1['baz']).to eq(item2['baz'])
+    end
+
+    it 'should allow access to the aliased bar/gzonk vault item via a symbol' do
+      ChefVault::TestFixtures.plugins
+      item1 = ChefVault::Item.load(:bar, 'foo')
+      item2 = ChefVault::Item.load(:bar, 'gzonk')
       expect(item1['baz']).to eq(item2['baz'])
     end
 
