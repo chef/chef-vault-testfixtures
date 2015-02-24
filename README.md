@@ -13,11 +13,11 @@ dynamically stubs access to chef-vault encrypted data bags.
 
 ## USAGE
 
-chef-vault is a gem to manage distribution and control of keys to
+[chef-vault](https://github.com/Nordstrom/chef-vault) is a gem to manage distribution and control of keys to
 decrypt Chef encrypted data bags.
 
 When testing a cookbook that uses chef-vault, encryption is generally
-out of scope, which results in a large amount of stubs or mocks so that you get back fixture data without performing decryption.
+out of scope, which results in a large number of stubs or mocks so that you can get back fixture data without performing decryption.
 
 This gem makes testing Chef cookbooks easier using ChefSpec by
 dynamically stubbing attempts to access vault data to return invalid
