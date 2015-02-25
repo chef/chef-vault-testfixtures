@@ -6,7 +6,7 @@ require 'little-plugger'
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    VERSION = '0.1.3'
+    VERSION = '0.2.0'
 
     extend LittlePlugger path: 'chef-vault/test_fixtures',
                          module: ChefVault::TestFixtures
@@ -43,7 +43,7 @@ class ChefVault
                 end
                 # stub chef-vault to return the fake vault, via both symbol
                 # and string forms of the data bag name
-                [ vaultname, vaultname.to_s ].each do |data_bag|
+                [vaultname, vaultname.to_s].each do |data_bag|
                   allow(ChefVault::Item).to(
                     receive(:load)
                     .with(data_bag, item.to_s)

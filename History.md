@@ -1,5 +1,9 @@
 # Changelog for chef-vault-testfixtures
 
+## 0.2.0
+
+* move chef dependency out of runtime and into development - rubygems 1.8.x (which chef-client shipped with prior to 11.8.0) has major problems now that Chef v11 and v12 are both available
+
 ## 0.1.3
 
 * change chef runtime dependency from >= 11.14 to >= 11.0
