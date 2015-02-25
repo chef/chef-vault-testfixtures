@@ -191,6 +191,24 @@ A [companion cookbook](https://supermarket.chef.io/cookbooks/chef_vault_testfixt
 is also available that uses the same data to populate vaults during
 Test Kitchen integration runs.
 
+## DEPENDENCIES
+
+It may seem strange that chef isn't a runtime dependency of this gem.
+This is due to idiosyncracies in the way that old versions of rubygems
+(such as those that ship with chef-client prior to 11.18.0) process
+dependencies.
+
+If we include chef as a dependency, even with a relaxed requirement
+like '>= 11.0', rubygems v1.8.x will still try to pull in chef-12.0.3,
+even if the --conservative switch is used.  This in turn pulls in
+Ohai 8.1.x, which doesn't work under Ruby 1.9.3 (which is what chef-client
+11 embeds).
+
+rubygems v2.x.x do not suffer from this problem.  The net takeaway is that
+attempting to install this gem on a system that does not have chef installed
+will fail.  I expect the instances of people trying to do this to be
+small.
+
 ## AUTHOR
 
 James FitzGibbon - james.i.fitzgibbon@nordstrom.com - @jf647
