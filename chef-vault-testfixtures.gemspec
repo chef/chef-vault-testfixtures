@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.1.2.20150224090711 ruby lib
+# stub: chef-vault-testfixtures 0.1.3.20150225104151 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.1.2.20150224090711"
+  s.version = "0.1.3.20150225104151"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["James FitzGibbon"]
-  s.date = "2015-02-24"
+  s.date = "2015-02-25"
   s.description = "chef-vault-testfixtures provides an RSpec shared context that\ndynamically stubs access to chef-vault encrypted data bags."
   s.email = ["james.i.fitzgibbon@nordstrom.com"]
   s.extra_rdoc_files = ["History.md", "Manifest.txt", "README.md"]
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rspec>, ["~> 3.1"])
       s.add_runtime_dependency(%q<chef-vault>, ["~> 2.5"])
       s.add_runtime_dependency(%q<little-plugger>, ["~> 1.1"])
-      s.add_runtime_dependency(%q<chef>, [">= 11.14"])
+      s.add_runtime_dependency(%q<chef>, [">= 11.0"])
       s.add_development_dependency(%q<rdoc>, ["~> 4.0"])
       s.add_development_dependency(%q<hoe>, ["~> 3.13"])
       s.add_development_dependency(%q<hoe-gemspec>, ["~> 1.0"])
@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rspec>, ["~> 3.1"])
       s.add_dependency(%q<chef-vault>, ["~> 2.5"])
       s.add_dependency(%q<little-plugger>, ["~> 1.1"])
-      s.add_dependency(%q<chef>, [">= 11.14"])
+      s.add_dependency(%q<chef>, [">= 11.0"])
       s.add_dependency(%q<rdoc>, ["~> 4.0"])
       s.add_dependency(%q<hoe>, ["~> 3.13"])
       s.add_dependency(%q<hoe-gemspec>, ["~> 1.0"])
@@ -67,7 +67,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rspec>, ["~> 3.1"])
     s.add_dependency(%q<chef-vault>, ["~> 2.5"])
     s.add_dependency(%q<little-plugger>, ["~> 1.1"])
-    s.add_dependency(%q<chef>, [">= 11.14"])
+    s.add_dependency(%q<chef>, [">= 11.0"])
     s.add_dependency(%q<rdoc>, ["~> 4.0"])
     s.add_dependency(%q<hoe>, ["~> 3.13"])
     s.add_dependency(%q<hoe-gemspec>, ["~> 1.0"])
