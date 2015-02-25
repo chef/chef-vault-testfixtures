@@ -1,5 +1,10 @@
 # Changelog for chef-vault-testfixtures
 
+## 0.1.3
+
+* change chef runtime dependency from >= 11.14 to >= 11.0
+* clean up some test ordering problems related to not clearing the blacklist properly
+
 ## 0.1.2
 
 * allow access to the data bag via the symbol form as well as the string form

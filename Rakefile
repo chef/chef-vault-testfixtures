@@ -13,7 +13,7 @@ begin
     extra_deps << ['rspec', '~> 3.1']
     extra_deps << ['chef-vault', '~> 2.5']
     extra_deps << ['little-plugger', '~> 1.1']
-    extra_deps << ['chef', '>= 11.14']
+    extra_deps << ['chef', '>= 11.0']
     extra_dev_deps << ['hoe', '~> 3.13']
     extra_dev_deps << ['hoe-gemspec', '~> 1.0']
     extra_dev_deps << ['rake', '~> 10.3']

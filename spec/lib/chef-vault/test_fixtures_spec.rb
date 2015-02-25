@@ -36,6 +36,11 @@ RSpec.describe ChefVault::TestFixtures do
     ChefVault::TestFixtures.clear_context
   end
 
+  after do
+    ChefVault::TestFixtures.clear_plugins
+    ChefVault::TestFixtures.clear_context
+  end
+
   describe 'Generic functionality' do
     it 'should be able to load plugins' do
       expect(ChefVault::TestFixtures.plugins).to be_a(Hash)
@@ -73,52 +78,44 @@ RSpec.describe ChefVault::TestFixtures do
   end
 
   describe 'Stub a Vault' do
-    it 'it should stub the foo/bar vault item' do
-      ChefVault::TestFixtures.plugins
+    it 'should stub the foo/bar vault item' do
       baz = ChefVault::Item.load('foo', 'bar')['baz']
       expect(baz).to eq(2)
     end
 
-    it 'it should allow access to foo/bar via a symbol instead of a string' do
-      ChefVault::TestFixtures.plugins
+    it 'should allow access to foo/bar via a symbol instead of a string' do
       baz = ChefVault::Item.load(:foo, 'bar')['baz']
       expect(baz).to eq(2)
     end
 
-    it 'it should stub the bar/foo vault item' do
-      ChefVault::TestFixtures.plugins
+    it 'should stub the bar/foo vault item' do
       baz = ChefVault::Item.load('bar', 'foo')['baz']
       expect(baz).to eq(1)
     end
 
     it 'should allow access to the aliased bar/gzonk vault item' do
-      ChefVault::TestFixtures.plugins
       item1 = ChefVault::Item.load('bar', 'foo')
       item2 = ChefVault::Item.load('bar', 'gzonk')
       expect(item1['baz']).to eq(item2['baz'])
     end
 
     it 'should allow access to the aliased bar/gzonk vault item via a symbol' do
-      ChefVault::TestFixtures.plugins
       item1 = ChefVault::Item.load(:bar, 'foo')
       item2 = ChefVault::Item.load(:bar, 'gzonk')
       expect(item1['baz']).to eq(item2['baz'])
     end
 
     it 'should allow and ignore an attempt to change a vault' do
-      ChefVault::TestFixtures.plugins
       item = ChefVault::Item.load('bar', 'foo')
       item['foo'] = 'foo'
     end
 
     it 'should allow and ignore an attempt to set the clients' do
-      ChefVault::TestFixtures.plugins
       item = ChefVault::Item.load('bar', 'foo')
       item.clients('*:*')
     end
 
     it 'should allow and ignore an attempt to save' do
-      ChefVault::TestFixtures.plugins
       item = ChefVault::Item.load('bar', 'foo')
       item.save
     end
