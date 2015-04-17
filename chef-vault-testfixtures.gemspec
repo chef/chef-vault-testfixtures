@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.3.0.20150417134443 ruby lib
+# stub: chef-vault-testfixtures 0.3.0.20150417141427 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.3.0.20150417134443"
+  s.version = "0.3.0.20150417141427"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
@@ -37,9 +37,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rubocop>, ["~> 0.29"])
       s.add_development_dependency(%q<simplecov>, ["~> 0.9"])
       s.add_development_dependency(%q<simplecov-console>, ["~> 0.2"])
-      s.add_development_dependency(%q<pry-byebug>, ["~> 3.0"])
-      s.add_development_dependency(%q<pry-rescue>, ["~> 1.3"])
-      s.add_development_dependency(%q<pry-stack_explorer>, ["~> 0.4"])
       s.add_development_dependency(%q<yard>, ["~> 0.8"])
     else
       s.add_dependency(%q<rspec>, ["~> 3.1"])
@@ -56,9 +53,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rubocop>, ["~> 0.29"])
       s.add_dependency(%q<simplecov>, ["~> 0.9"])
       s.add_dependency(%q<simplecov-console>, ["~> 0.2"])
-      s.add_dependency(%q<pry-byebug>, ["~> 3.0"])
-      s.add_dependency(%q<pry-rescue>, ["~> 1.3"])
-      s.add_dependency(%q<pry-stack_explorer>, ["~> 0.4"])
       s.add_dependency(%q<yard>, ["~> 0.8"])
     end
   else
@@ -76,9 +70,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rubocop>, ["~> 0.29"])
     s.add_dependency(%q<simplecov>, ["~> 0.9"])
     s.add_dependency(%q<simplecov-console>, ["~> 0.2"])
-    s.add_dependency(%q<pry-byebug>, ["~> 3.0"])
-    s.add_dependency(%q<pry-rescue>, ["~> 1.3"])
-    s.add_dependency(%q<pry-stack_explorer>, ["~> 0.4"])
     s.add_dependency(%q<yard>, ["~> 0.8"])
   end
 end
