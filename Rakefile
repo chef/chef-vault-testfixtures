@@ -12,7 +12,6 @@ begin
     license 'apache2'
     extra_deps << ['rspec', '~> 3.1']
     extra_deps << ['chef-vault', '~> 2.5']
-    extra_deps << ['little-plugger', '~> 1.1']
     extra_dev_deps << ['chef', '~> 12.0']
     extra_dev_deps << ['hoe', '~> 3.13']
     extra_dev_deps << ['hoe-gemspec', '~> 1.0']
@@ -25,9 +24,6 @@ begin
     extra_dev_deps << ['rubocop', '~> 0.29']
     extra_dev_deps << ['simplecov', '~> 0.9']
     extra_dev_deps << ['simplecov-console', '~> 0.2']
-    extra_dev_deps << ['pry-byebug', '~> 3.0']
-    extra_dev_deps << ['pry-rescue', '~> 1.3']
-    extra_dev_deps << ['pry-stack_explorer', '~> 0.4']
     extra_dev_deps << ['yard', '~> 0.8']
   end
   # re-generate our gemspec before packaging

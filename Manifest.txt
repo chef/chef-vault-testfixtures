@@ -12,5 +12,3 @@ lib/chef-vault/test_fixtures.rb
 lib/hoe/markdown.rb
 spec/lib/chef-vault/test_fixtures_spec.rb
 spec/spec_helper.rb
-spec/support/chef-vault/test_fixtures/bar.rb
-spec/support/chef-vault/test_fixtures/foo.rb
