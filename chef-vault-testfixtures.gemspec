@@ -1,23 +1,23 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.2.0.20150225121503 ruby lib
+# stub: chef-vault-testfixtures 0.3.0.20150417134443 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.2.0.20150225121503"
+  s.version = "0.3.0.20150417134443"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["James FitzGibbon"]
-  s.date = "2015-02-25"
-  s.description = "chef-vault-testfixtures provides an RSpec shared context that\ndynamically stubs access to chef-vault encrypted data bags."
+  s.date = "2015-04-17"
+  s.description = "chef-vault-testfixtures provides an RSpec shared context that\nstubs access to chef-vault encrypted data bags using the same\nfallback mechanism as the `chef_vault_item` helper from the\n[chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
   s.email = ["james.i.fitzgibbon@nordstrom.com"]
   s.extra_rdoc_files = ["History.md", "Manifest.txt", "README.md"]
-  s.files = [".rspec", ".rubocop.yml", ".yardopts", "Gemfile", "Guardfile", "History.md", "Manifest.txt", "README.md", "Rakefile", "chef-vault-testfixtures.gemspec", "lib/chef-vault/test_fixtures.rb", "lib/hoe/markdown.rb", "spec/lib/chef-vault/test_fixtures_spec.rb", "spec/spec_helper.rb", "spec/support/chef-vault/test_fixtures/bar.rb", "spec/support/chef-vault/test_fixtures/foo.rb"]
+  s.files = [".rspec", ".rubocop.yml", ".yardopts", "Gemfile", "Guardfile", "History.md", "Manifest.txt", "README.md", "Rakefile", "chef-vault-testfixtures.gemspec", "lib/chef-vault/test_fixtures.rb", "lib/hoe/markdown.rb", "spec/lib/chef-vault/test_fixtures_spec.rb", "spec/spec_helper.rb"]
   s.homepage = "https://github.com/Nordstrom/chef-vault-testfixtures"
   s.licenses = ["apache2"]
   s.rdoc_options = ["--main", "README.md"]
-  s.rubygems_version = "2.4.4"
-  s.summary = "chef-vault-testfixtures provides an RSpec shared context that dynamically stubs access to chef-vault encrypted data bags."
+  s.rubygems_version = "2.4.6"
+  s.summary = "chef-vault-testfixtures provides an RSpec shared context that stubs access to chef-vault encrypted data bags using the same fallback mechanism as the `chef_vault_item` helper from the [chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rspec>, ["~> 3.1"])
       s.add_runtime_dependency(%q<chef-vault>, ["~> 2.5"])
-      s.add_runtime_dependency(%q<little-plugger>, ["~> 1.1"])
       s.add_development_dependency(%q<rdoc>, ["~> 4.0"])
       s.add_development_dependency(%q<chef>, ["~> 12.0"])
       s.add_development_dependency(%q<hoe>, ["~> 3.13"])
@@ -45,7 +44,6 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rspec>, ["~> 3.1"])
       s.add_dependency(%q<chef-vault>, ["~> 2.5"])
-      s.add_dependency(%q<little-plugger>, ["~> 1.1"])
       s.add_dependency(%q<rdoc>, ["~> 4.0"])
       s.add_dependency(%q<chef>, ["~> 12.0"])
       s.add_dependency(%q<hoe>, ["~> 3.13"])
@@ -66,7 +64,6 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rspec>, ["~> 3.1"])
     s.add_dependency(%q<chef-vault>, ["~> 2.5"])
-    s.add_dependency(%q<little-plugger>, ["~> 1.1"])
     s.add_dependency(%q<rdoc>, ["~> 4.0"])
     s.add_dependency(%q<chef>, ["~> 12.0"])
     s.add_dependency(%q<hoe>, ["~> 3.13"])

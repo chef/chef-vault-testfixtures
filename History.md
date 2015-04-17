@@ -1,5 +1,9 @@
 # Changelog for chef-vault-testfixtures
 
+## 0.3.0
+
+* completely re-work to use JSON data bag files in test/integration for compatibility with the fallback mechanism in the chef-vault cookbook
+
 ## 0.2.0
 
 * move chef dependency out of runtime and into development - rubygems 1.8.x (which chef-client shipped with prior to 11.8.0) has major problems now that Chef v11 and v12 are both available

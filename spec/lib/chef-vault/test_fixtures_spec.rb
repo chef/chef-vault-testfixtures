@@ -1,22 +1,5 @@
 require 'chef-vault/test_fixtures'
 
-# sample plugins
-require 'support/chef-vault/test_fixtures/foo.rb'
-require 'support/chef-vault/test_fixtures/bar.rb'
-
-# LittlePlugger doesn't expect to have its inclusion/exclusion
-# lists reset in a single process, so we have to monkeypatch
-# in some testing functionality
-module LittlePlugger
-  module ClassMethods
-    def clear_plugins
-      @plugin_names = []
-      @disregard_plugin = []
-      @loaded = {}
-    end
-  end
-end
-
 # same with ChefVault::TestFixtures
 class ChefVault
   class TestFixtures
@@ -32,26 +15,14 @@ RSpec.describe ChefVault::TestFixtures do
   include ChefVault::TestFixtures.rspec_shared_context
 
   before do
-    ChefVault::TestFixtures.clear_plugins
     ChefVault::TestFixtures.clear_context
   end
 
   after do
-    ChefVault::TestFixtures.clear_plugins
     ChefVault::TestFixtures.clear_context
   end
 
   describe 'Generic functionality' do
-    it 'should be able to load plugins' do
-      expect(ChefVault::TestFixtures.plugins).to be_a(Hash)
-    end
-
-    it 'should load the expected vaults' do
-      expect(ChefVault::TestFixtures.plugins.keys).to(
-        contain_exactly(:foo, :bar)
-      )
-    end
-
     it 'can create an RSpec shared context' do
       sc = ChefVault::TestFixtures.rspec_shared_context
       expect(sc).to be_a(Module)
@@ -62,18 +33,6 @@ RSpec.describe ChefVault::TestFixtures do
       mod1 = ChefVault::TestFixtures.rspec_shared_context
       mod2 = ChefVault::TestFixtures.rspec_shared_context
       expect(mod2).to be(mod1)
-    end
-
-    it 'allows for the plugin list to be make explicit' do
-      ChefVault::TestFixtures.plugin :foo
-      expect(ChefVault::TestFixtures.plugins).to include(:foo)
-      expect(ChefVault::TestFixtures.plugins).not_to include(:bar)
-    end
-
-    it 'allows for plugins to be blacklisted' do
-      ChefVault::TestFixtures.disregard_plugin :foo
-      expect(ChefVault::TestFixtures.plugins).not_to include(:foo)
-      expect(ChefVault::TestFixtures.plugins).to include(:bar)
     end
   end
 
