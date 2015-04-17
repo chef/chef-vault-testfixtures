@@ -9,7 +9,7 @@ guard :rubocop, all_on_start: true, cli: ['-D'] do
   watch('Rakefile')
 end
 
-guard :rspec, all_on_start: true, cmd: 'bundle exec rescue rspec' do
+guard :rspec, all_on_start: true, cmd: 'bundle exec rspec' do
   watch(%r{^spec/(.+)_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})           { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch(%r{^spec/spec_helper.*\.rb$}) { 'spec' }

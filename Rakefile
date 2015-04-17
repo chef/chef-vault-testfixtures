@@ -24,9 +24,6 @@ begin
     extra_dev_deps << ['rubocop', '~> 0.29']
     extra_dev_deps << ['simplecov', '~> 0.9']
     extra_dev_deps << ['simplecov-console', '~> 0.2']
-    extra_dev_deps << ['pry-byebug', '~> 3.0']
-    extra_dev_deps << ['pry-rescue', '~> 1.3']
-    extra_dev_deps << ['pry-stack_explorer', '~> 0.4']
     extra_dev_deps << ['yard', '~> 0.8']
   end
   # re-generate our gemspec before packaging
