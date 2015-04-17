@@ -5,3 +5,6 @@ rvm:
   - "2.2.2"
 install: bundle install --binstubs
 env: TRAVIS_BUILD=true
+matrix:
+  allow_failures:
+    - rvm: "1.9.3-p551"
