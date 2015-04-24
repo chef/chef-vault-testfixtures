@@ -71,6 +71,18 @@ The recipe that the example tests:
 The helper will call `ChefVault::Item.load`, which will be stubbed using
 the data bag from the test/integration/data_bags directory.
 
+## VAULT PROBING
+
+Some recipes and helpers attempt to determine if a data bag is a vault
+by checking the raw data bag item to see if one of the values contains
+encrypted data, then checking for the existence of the `_keys` data bag
+item to go along with the normal item.  The [sensu cookbook](https://github.com/sensu/sensu-chef/blob/35ee3aa6fa4ad578cdf751fe6822e3d2b3890d94/libraries/sensu_helpers.rb#L39-55) is a good example
+of this:
+
+The helper also stubs these methods, so that the probe mechanism should
+consider the data bag to be a vault and call ChefVault::Item.load, which
+is stubbed as described above.
+
 ## DEPENDENCIES
 
 It may seem strange that chef isn't a runtime dependency of this gem.

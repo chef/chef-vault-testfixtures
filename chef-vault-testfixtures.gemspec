@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.3.0.20150417141427 ruby lib
+# stub: chef-vault-testfixtures 0.4.0.20150424123749 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.3.0.20150417141427"
+  s.version = "0.4.0.20150424123749"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["James FitzGibbon"]
-  s.date = "2015-04-17"
+  s.date = "2015-04-24"
   s.description = "chef-vault-testfixtures provides an RSpec shared context that\nstubs access to chef-vault encrypted data bags using the same\nfallback mechanism as the `chef_vault_item` helper from the\n[chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
   s.email = ["james.i.fitzgibbon@nordstrom.com"]
   s.extra_rdoc_files = ["History.md", "Manifest.txt", "README.md"]

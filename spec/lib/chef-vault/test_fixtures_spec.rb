@@ -36,7 +36,7 @@ RSpec.describe ChefVault::TestFixtures do
     end
   end
 
-  describe 'Stub a Vault' do
+  describe 'stub ChefVault::Item.load' do
     it 'should stub the foo/bar vault item' do
       baz = ChefVault::Item.load('foo', 'bar')['baz']
       expect(baz).to eq(2)
@@ -77,6 +77,23 @@ RSpec.describe ChefVault::TestFixtures do
     it 'should allow and ignore an attempt to save' do
       item = ChefVault::Item.load('bar', 'foo')
       item.save
+    end
+  end
+
+  describe 'stub Chef::DataBagItem.load' do
+    it 'should present the foo/bar data bag item as encrypted' do
+      dbi = Chef::DataBagItem.load('foo', 'bar')
+      encrypted = dbi.detect do |_, v|\
+        v.is_a?(Hash) && v.key?('encrypted_data')
+      end
+      expect(encrypted).to be_truthy
+    end
+  end
+
+  describe 'stub Chef::DataBag.load' do
+    it 'should fake the foo/bar_keys data bag item' do
+      db = Chef::DataBag.load('foo')
+      expect(db.key?('bar_keys')).to be_truthy
     end
   end
 end

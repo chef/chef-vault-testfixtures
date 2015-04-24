@@ -8,7 +8,7 @@ require 'chef-vault'
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    VERSION = '0.3.0'
+    VERSION = '0.4.0'
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
@@ -44,21 +44,50 @@ class ChefVault
 
             def stub_vault_item(vault, item, json)
               content = JSON.parse(json)
+              db = make_fakedatabag(vault, item)
+              dbi = make_fakedatabagitem(vault, item)
               vi = make_fakevault(vault, item)
+
               # stub lookup of each of the vault item keys
               content.each do |k, v|
                 next if 'id' == k
+                dbi[k] = { 'encrypted_data' => '...' }
                 allow(vi).to receive(:[]).with(k).and_return(v)
               end
-              # stub chef-vault to return the fake vault item, via
-              # both symbol and string forms of the data bag name
+
+              # stub ChefVault and Chef::DataBag to return the doubles
+              # via both symbol and string forms of the data bag name
               [vault, vault.to_sym].each do |dbname|
                 allow(ChefVault::Item).to(
                   receive(:load)
                   .with(dbname, item)
                   .and_return(vi)
                 )
+                allow(Chef::DataBagItem).to(
+                  receive(:load)
+                  .with(dbname, item)
+                  .and_return(dbi)
+                )
+                allow(Chef::DataBag).to(
+                  receive(:load)
+                  .with(dbname)
+                  .and_return(db)
+                )
               end
+            end
+
+            def make_fakedatabagitem(_, _)
+              {}
+            end
+
+            def make_fakedatabag(vault, item)
+              db = double "databag #{vault}"
+              %w(key? has_key?).each do |pred|
+                allow(db).to(receive(pred.to_sym)
+                             .with("#{item}_keys")
+                             .and_return(true))
+              end
+              db
             end
 
             def make_fakevault(vault, item)
