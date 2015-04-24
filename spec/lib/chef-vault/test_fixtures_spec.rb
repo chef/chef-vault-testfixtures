@@ -52,13 +52,13 @@ RSpec.describe ChefVault::TestFixtures do
       expect(baz).to eq(1)
     end
 
-    it 'should allow access to the aliased bar/gzonk vault item' do
+    it 'should allow access to the bar/gzonk vault item' do
       item1 = ChefVault::Item.load('bar', 'foo')
       item2 = ChefVault::Item.load('bar', 'gzonk')
       expect(item1['baz']).to eq(item2['baz'])
     end
 
-    it 'should allow access to the aliased bar/gzonk vault item via a symbol' do
+    it 'should allow access to the bar/gzonk vault item via a symbol' do
       item1 = ChefVault::Item.load(:bar, 'foo')
       item2 = ChefVault::Item.load(:bar, 'gzonk')
       expect(item1['baz']).to eq(item2['baz'])

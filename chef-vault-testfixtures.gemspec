@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.4.0.20150424123749 ruby lib
+# stub: chef-vault-testfixtures 0.4.1.20150424140755 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.4.0.20150424123749"
+  s.version = "0.4.1.20150424140755"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]

@@ -1,5 +1,9 @@
 # Changelog for chef-vault-testfixtures
 
+## 0.4.1
+
+* fix bug where only the last item for a given vault was stubbed
+
 ## 0.4.0
 
 * add stubs for Chef::DataBagItem.load and Chef::DataBag.load for compatibility with code that probes the data bag to determine if it is a vault (e.g. chef-vault cookbook ~> 1.3)
