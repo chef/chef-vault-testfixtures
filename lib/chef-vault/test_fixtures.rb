@@ -8,7 +8,7 @@ require 'chef-vault'
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    VERSION = '0.4.0'
+    VERSION = '0.4.1'
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
@@ -35,17 +35,18 @@ class ChefVault
             end
 
             def stub_vault(vault)
+              db = {}
               vault.each_child do |e|
                 next unless e.file?
                 m = e.basename.to_s.downcase.match(/(.+)\.json/i)
-                stub_vault_item(vault.basename.to_s, m[1], e.read) if m
+                stub_vault_item(vault.basename.to_s, m[1], e.read, db) if m
               end
             end
 
-            def stub_vault_item(vault, item, json)
+            def stub_vault_item(vault, item, json, db)
               content = JSON.parse(json)
-              db = make_fakedatabag(vault, item)
-              dbi = make_fakedatabagitem(vault, item)
+              db["#{item}_keys"] = true
+              dbi = {}
               vi = make_fakevault(vault, item)
 
               # stub lookup of each of the vault item keys
@@ -74,20 +75,6 @@ class ChefVault
                   .and_return(db)
                 )
               end
-            end
-
-            def make_fakedatabagitem(_, _)
-              {}
-            end
-
-            def make_fakedatabag(vault, item)
-              db = double "databag #{vault}"
-              %w(key? has_key?).each do |pred|
-                allow(db).to(receive(pred.to_sym)
-                             .with("#{item}_keys")
-                             .and_return(true))
-              end
-              db
             end
 
             def make_fakevault(vault, item)
