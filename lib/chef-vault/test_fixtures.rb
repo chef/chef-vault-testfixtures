@@ -1,5 +1,6 @@
 require 'pathname'
 require 'json'
+require 'hashie/extensions/method_access'
 
 require 'rspec'
 require 'rspec/core/shared_context'
@@ -8,7 +9,7 @@ require 'chef-vault'
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    VERSION = '0.4.1'
+    VERSION = '0.4.2'
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
@@ -46,7 +47,8 @@ class ChefVault
             def stub_vault_item(vault, item, json, db)
               content = JSON.parse(json)
               db["#{item}_keys"] = true
-              dbi = {}
+              dbi = ChefVault::TestFixtureDataBagItem.new
+              dbi['raw_data'] = content
               vi = make_fakevault(vault, item)
 
               # stub lookup of each of the vault item keys
@@ -89,5 +91,10 @@ class ChefVault
       end
       # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
     end
+  end
+
+  # a hash with method access to stand in for a Chef::DataBagItem
+  class TestFixtureDataBagItem < Hash
+    include Hashie::Extensions::MethodAccess
   end
 end

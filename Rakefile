@@ -12,6 +12,7 @@ begin
     license 'apache2'
     extra_deps << ['rspec', '~> 3.1']
     extra_deps << ['chef-vault', '~> 2.5']
+    extra_deps << ['hashie', '~> 2.1']
     extra_dev_deps << ['chef', '~> 12.0']
     extra_dev_deps << ['hoe', '~> 3.13']
     extra_dev_deps << ['hoe-gemspec', '~> 1.0']
