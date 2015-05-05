@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.4.1.20150424140755 ruby lib
+# stub: chef-vault-testfixtures 0.4.1.20150505155024 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.4.1.20150424140755"
+  s.version = "0.4.1.20150505155024"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["James FitzGibbon"]
-  s.date = "2015-04-24"
+  s.date = "2015-05-05"
   s.description = "chef-vault-testfixtures provides an RSpec shared context that\nstubs access to chef-vault encrypted data bags using the same\nfallback mechanism as the `chef_vault_item` helper from the\n[chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
   s.email = ["james.i.fitzgibbon@nordstrom.com"]
   s.extra_rdoc_files = ["History.md", "Manifest.txt", "README.md"]
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/Nordstrom/chef-vault-testfixtures"
   s.licenses = ["apache2"]
   s.rdoc_options = ["--main", "README.md"]
-  s.rubygems_version = "2.4.6"
+  s.rubygems_version = "2.4.4"
   s.summary = "chef-vault-testfixtures provides an RSpec shared context that stubs access to chef-vault encrypted data bags using the same fallback mechanism as the `chef_vault_item` helper from the [chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
 
   if s.respond_to? :specification_version then
@@ -34,6 +34,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<guard-rspec>, ["~> 4.2"])
       s.add_development_dependency(%q<guard-rake>, ["~> 0.0"])
       s.add_development_dependency(%q<guard-rubocop>, ["~> 1.2"])
+      s.add_development_dependency(%q<chefspec>, ["~> 4.2"])
+      s.add_development_dependency(%q<berkshelf>, ["~> 3.2"])
       s.add_development_dependency(%q<rubocop>, ["~> 0.29"])
       s.add_development_dependency(%q<simplecov>, ["~> 0.9"])
       s.add_development_dependency(%q<simplecov-console>, ["~> 0.2"])
@@ -50,6 +52,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<guard-rspec>, ["~> 4.2"])
       s.add_dependency(%q<guard-rake>, ["~> 0.0"])
       s.add_dependency(%q<guard-rubocop>, ["~> 1.2"])
+      s.add_dependency(%q<chefspec>, ["~> 4.2"])
+      s.add_dependency(%q<berkshelf>, ["~> 3.2"])
       s.add_dependency(%q<rubocop>, ["~> 0.29"])
       s.add_dependency(%q<simplecov>, ["~> 0.9"])
       s.add_dependency(%q<simplecov-console>, ["~> 0.2"])
@@ -67,6 +71,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<guard-rspec>, ["~> 4.2"])
     s.add_dependency(%q<guard-rake>, ["~> 0.0"])
     s.add_dependency(%q<guard-rubocop>, ["~> 1.2"])
+    s.add_dependency(%q<chefspec>, ["~> 4.2"])
+    s.add_dependency(%q<berkshelf>, ["~> 3.2"])
     s.add_dependency(%q<rubocop>, ["~> 0.29"])
     s.add_dependency(%q<simplecov>, ["~> 0.9"])
     s.add_dependency(%q<simplecov-console>, ["~> 0.2"])

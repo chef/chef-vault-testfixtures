@@ -21,6 +21,8 @@ begin
     extra_dev_deps << ['guard-rspec', '~> 4.2']
     extra_dev_deps << ['guard-rake', '~> 0.0']
     extra_dev_deps << ['guard-rubocop', '~> 1.2']
+    extra_dev_deps << ['chefspec', '~> 4.2']
+    extra_dev_deps << ['berkshelf', '~> 3.2']
     extra_dev_deps << ['rubocop', '~> 0.29']
     extra_dev_deps << ['simplecov', '~> 0.9']
     extra_dev_deps << ['simplecov-console', '~> 0.2']
