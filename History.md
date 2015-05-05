@@ -1,5 +1,9 @@
 # Changelog for chef-vault-testfixtures
 
+## 0.4.2
+
+* ensure that the data bag item returned from the `Chef::DataBagItem.load` stub responds to `#raw_data` so that stubbing unencrypted data bags still works (reported by [Dru Goradia](https://github.com/dgoradia-atlas))
+
 ## 0.4.1
 
 * fix bug where only the last item for a given vault was stubbed
