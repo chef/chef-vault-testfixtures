@@ -1,14 +1,17 @@
 require 'pathname'
 require 'json'
+require 'hashie/extensions/method_access'
 
 require 'rspec'
 require 'rspec/core/shared_context'
 require 'chef-vault'
 
+# chef-vault helps manage encrypted data bags using a node's public key
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    VERSION = '0.4.1'
+    # the version of the gem
+    VERSION = '0.5.0'
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
@@ -17,42 +20,75 @@ class ChefVault
     # @return [Module] the RSpec shared context
     class << self
       # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-      def rspec_shared_context
+
+      # created a shared RSpec context that stubs calls to ChefVault::Item.load
+      # @param stub_encrypted_data [Boolean] whether to also stub calls to
+      #   Chef::DataBagItem.load
+      # @return [Module] a shared context to include in your example groups
+      def rspec_shared_context(stub_encrypted_data = false)
         @context ||= begin
           Module.new do
             extend RSpec::Core::SharedContext
 
-            before { find_vaults }
+            before { find_vaults(stub_encrypted_data) }
 
             private
 
-            def find_vaults
+            # finds all the directories in test/integration/data_bags, stubbing
+            # each as a vault
+            # @param stub_encrypted_data [Boolean] whether to also stub calls to
+            #   Chef::DataBagItem.load
+            # return [void]
+            # @api private
+            def find_vaults(stub_encrypted_data)
               dbdir = Pathname.new('test') + 'integration' + 'data_bags'
               dbdir.each_child do |vault|
                 next unless vault.directory?
-                stub_vault(vault)
+                stub_vault(stub_encrypted_data, vault)
               end
             end
 
-            def stub_vault(vault)
+            # stubs a vault with the contents of JSON files in a directory.
+            # Finds all files in the vault path ending in .json and stubs
+            # each as a vault item.
+            # @param stub_encrypted_data [Boolean] whether to also stub calls to
+            #   Chef::DataBagItem.load
+            # @param vault [Pathname] the path to the directory that will be
+            #   stubbed as a vault
+            # @return [void]
+            # @api private
+            def stub_vault(stub_encrypted_data, vault)
               db = {}
               vault.each_child do |e|
                 next unless e.file?
                 m = e.basename.to_s.downcase.match(/(.+)\.json/i)
-                stub_vault_item(vault.basename.to_s, m[1], e.read, db) if m
+                next unless m
+                content = JSON.parse(e.read)
+                vaultname = vault.basename.to_s
+                stub_vault_item(vaultname, m[1], content, db)
+                if stub_encrypted_data
+                  stub_vault_item_encrypted_data(vaultname, m[1], content)
+                end
               end
             end
 
-            def stub_vault_item(vault, item, json, db)
-              content = JSON.parse(json)
+            # stubs a vault item with the contents of a parsed JSON string.
+            # If the class-level setting `encrypted_data_stub` is true, then
+            # Chef::DataBagItem.load
+            # @param vault [String] the name of the vault data bag
+            # @param item [String] the name of the vault item
+            # @param content [String] the JSON-encoded contents to populate the
+            #   fake vault with
+            # @param db [Hash] the fake data bag item that contains the item
+            # @return [void]
+            # @api private
+            def stub_vault_item(vault, item, content, db)
               db["#{item}_keys"] = true
-              dbi = {}
               vi = make_fakevault(vault, item)
 
-              # stub lookup of each of the vault item keys
+              # stub vault lookup of each of the vault item keys
               content.each do |k, v|
                 next if 'id' == k
-                dbi[k] = { 'encrypted_data' => '...' }
                 allow(vi).to receive(:[]).with(k).and_return(v)
               end
 
@@ -64,11 +100,6 @@ class ChefVault
                   .with(dbname, item)
                   .and_return(vi)
                 )
-                allow(Chef::DataBagItem).to(
-                  receive(:load)
-                  .with(dbname, item)
-                  .and_return(dbi)
-                )
                 allow(Chef::DataBag).to(
                   receive(:load)
                   .with(dbname)
@@ -77,6 +108,39 @@ class ChefVault
               end
             end
 
+            # stubs Chef::DataBagItem.load to return a fake hash in which
+            # each key of the content returns a hash with single
+            # `encrypted_data` key, which fools some attempts to determine
+            # whether a data bag is a vault
+            # @param vault [String] the name of the vault data bag
+            # @param item [String] the name of the vault item
+            # @param content [String] the JSON-encoded contents to populate the
+            #   fake vault with
+            # @return [void]
+            # @api private
+            def stub_vault_item_encrypted_data(vault, item, content)
+              # stub data bag lookup of each of the vault item keys
+              dbi = ChefVault::TestFixtureDataBagItem.new
+              dbi['raw_data'] = content
+              content.each_key do |k|
+                next if 'id' == k
+                dbi[k] = { 'encrypted_data' => '...' }
+              end
+
+              [vault, vault.to_sym].each do |dbname|
+                allow(Chef::DataBagItem).to(
+                  receive(:load)
+                  .with(dbname, item)
+                  .and_return(dbi)
+                )
+              end
+            end
+
+            # returns an RSpec double that acts like a vault item
+            # @param vault [String] the name of the vault data bag
+            # @param item [String] the name of the vault item
+            # @return [RSpec::Mocks::Double] the vault double
+            # @api private
             def make_fakevault(vault, item)
               fakevault = double "vault item #{vault}/#{item}"
               allow(fakevault).to receive(:[]=).with(String, Object)
@@ -89,5 +153,10 @@ class ChefVault
       end
       # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
     end
+  end
+
+  # a hash with method access to stand in for a Chef::DataBagItem
+  class TestFixtureDataBagItem < Hash
+    include Hashie::Extensions::MethodAccess
   end
 end

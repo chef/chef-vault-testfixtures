@@ -1,0 +1,6 @@
+DEPENDENCIES
+  test1
+    path: test/fixtures/cookbooks/test1
+
+GRAPH
+  test1 (0.0.0)
