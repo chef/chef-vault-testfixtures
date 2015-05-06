@@ -1,8 +1,8 @@
 # Changelog for chef-vault-testfixtures
 
-## 0.4.2
+## 0.5.0
 
-* ensure that the data bag item returned from the `Chef::DataBagItem.load` stub responds to `#raw_data` so that stubbing unencrypted data bags still works (reported by [Dru Goradia](https://github.com/dgoradia-atlas))
+* breaking change: by default, only stub calls to `ChefVault::Item.load(bag, item)` and `Chef::DataBag.load(bag).key?(item_keys)`.  This allows people who are using the JSON files in test/integration/data_bags to stub unencrypted data bag to do so.  See the README for details of how to continue to stub `ChefVault::DataBagItem.load(bag, item)` and return a fake hash.  Reported by [Dru Goradia](https://github.com/dgoradia-atlas))
 
 ## 0.4.1
 

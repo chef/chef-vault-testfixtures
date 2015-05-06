@@ -6,9 +6,11 @@ require 'rspec'
 require 'rspec/core/shared_context'
 require 'chef-vault'
 
+# chef-vault helps manage encrypted data bags using a node's public key
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
+    # the version of the gem
     VERSION = '0.5.0'
 
     # dynamically creates a memoized RSpec shared context
@@ -18,6 +20,11 @@ class ChefVault
     # @return [Module] the RSpec shared context
     class << self
       # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+
+      # created a shared RSpec context that stubs calls to ChefVault::Item.load
+      # @param stub_encrypted_data [Boolean] whether to also stub calls to
+      #   Chef::DataBagItem.load
+      # @return [Module] a shared context to include in your example groups
       def rspec_shared_context(stub_encrypted_data = false)
         @context ||= begin
           Module.new do
@@ -29,6 +36,8 @@ class ChefVault
 
             # finds all the directories in test/integration/data_bags, stubbing
             # each as a vault
+            # @param stub_encrypted_data [Boolean] whether to also stub calls to
+            #   Chef::DataBagItem.load
             # return [void]
             # @api private
             def find_vaults(stub_encrypted_data)
@@ -42,6 +51,8 @@ class ChefVault
             # stubs a vault with the contents of JSON files in a directory.
             # Finds all files in the vault path ending in .json and stubs
             # each as a vault item.
+            # @param stub_encrypted_data [Boolean] whether to also stub calls to
+            #   Chef::DataBagItem.load
             # @param vault [Pathname] the path to the directory that will be
             #   stubbed as a vault
             # @return [void]
