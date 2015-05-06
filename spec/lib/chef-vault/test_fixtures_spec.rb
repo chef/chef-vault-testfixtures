@@ -1,28 +1,10 @@
 require 'chef-vault/test_fixtures'
 
-# same with ChefVault::TestFixtures
-class ChefVault
-  class TestFixtures
-    class << self
-      def clear_context
-        @context = nil
-      end
-    end
-  end
-end
-
 RSpec.describe ChefVault::TestFixtures do
-  include ChefVault::TestFixtures.rspec_shared_context
-
-  before do
+  describe 'without the encrypted_data stub' do
     ChefVault::TestFixtures.clear_context
-  end
+    include ChefVault::TestFixtures.rspec_shared_context(false)
 
-  after do
-    ChefVault::TestFixtures.clear_context
-  end
-
-  describe 'Generic functionality' do
     it 'can create an RSpec shared context' do
       sc = ChefVault::TestFixtures.rspec_shared_context
       expect(sc).to be_a(Module)
@@ -34,9 +16,7 @@ RSpec.describe ChefVault::TestFixtures do
       mod2 = ChefVault::TestFixtures.rspec_shared_context
       expect(mod2).to be(mod1)
     end
-  end
 
-  describe 'stub ChefVault::Item.load' do
     it 'should stub the foo/bar vault item' do
       baz = ChefVault::Item.load('foo', 'bar')['baz']
       expect(baz).to eq(2)
@@ -78,22 +58,25 @@ RSpec.describe ChefVault::TestFixtures do
       item = ChefVault::Item.load('bar', 'foo')
       item.save
     end
-  end
 
-  describe 'stub Chef::DataBagItem.load' do
+    it 'should stub the _keys data bag item' do
+      db = Chef::DataBag.load('foo')
+      expect(db.key?('bar_keys')).to be_truthy
+    end
+  end
+end
+
+RSpec.describe ChefVault::TestFixtures do
+  describe 'with the encrypted_data stub' do
+    ChefVault::TestFixtures.clear_context
+    include ChefVault::TestFixtures.rspec_shared_context(true)
+
     it 'should present the foo/bar data bag item as encrypted' do
       dbi = Chef::DataBagItem.load('foo', 'bar')
       encrypted = dbi.detect do |_, v|\
         v.is_a?(Hash) && v.key?('encrypted_data')
       end
       expect(encrypted).to be_truthy
-    end
-  end
-
-  describe 'stub Chef::DataBag.load' do
-    it 'should fake the foo/bar_keys data bag item' do
-      db = Chef::DataBag.load('foo')
-      expect(db.key?('bar_keys')).to be_truthy
     end
   end
 end

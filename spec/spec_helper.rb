@@ -21,3 +21,14 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 end
+
+# a helper to clear the context between examples
+class ChefVault
+  class TestFixtures
+    class << self
+      def clear_context
+        @context = nil
+      end
+    end
+  end
+end
