@@ -6,6 +6,13 @@ require 'rspec'
 require 'rspec/core/shared_context'
 require 'chef-vault'
 
+RSpec.configure do |c|
+  c.add_setting(
+    :data_bags_path,
+    :default => 'test/integration/data_bags'
+  )
+end
+
 # chef-vault helps manage encrypted data bags using a node's public key
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
@@ -41,7 +48,7 @@ class ChefVault
             # return [void]
             # @api private
             def find_vaults(stub_encrypted_data)
-              dbdir = Pathname.new('test') + 'integration' + 'data_bags'
+              dbdir = Pathname.new(RSpec.configuration.data_bags_path)
               dbdir.each_child do |vault|
                 next unless vault.directory?
                 stub_vault(stub_encrypted_data, vault)

@@ -28,6 +28,13 @@ helper provided by that cookbook, then failing to load the vault
 causes the helper to fall back to a normal JSON data bag in the
 directory `test/integration/data_bags`.
 
+If you don't like the default path you can easily change it by setting
+like this.
+
+```ruby
+RSpec.configuration.data_bags_path = 'test/fixtures/data_bags'
+```
+
 This gem makes the unit test side of cookbook testing with ChefSpec
 easier by dynamically stubbing attempts to access vault data to
 use the same JSON data bags as the helper.  This allows you to provide
