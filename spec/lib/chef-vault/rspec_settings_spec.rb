@@ -12,7 +12,7 @@ RSpec.describe 'chef_vault_data_bags_path' do
     expect(data_bags_path).to eq(DEFAULT_DATA_BAGS_PATH)
   end
 
-  it "can be overridden" do
+  it 'can be overridden' do
     RSpec.configuration.chef_vault_data_bags_path = 'test/fixtures/data_bags'
     expect(data_bags_path).to eq('test/fixtures/data_bags')
     expect(RSpec.configuration.chef_vault_data_bags_path?).to be_truthy
