@@ -4,3 +4,4 @@
 * provide mechanism for limiting which vaults are loaded
 * provide mechanism to clear singleton
 * eventually, integrate into the chef-vault gem
+* fix rubocop warnings about nested definitions
