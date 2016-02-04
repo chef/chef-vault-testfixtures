@@ -1,9 +1,9 @@
-if ENV['COVERAGE']
-  require 'simplecov'
-  require 'simplecov-console'
+if ENV["COVERAGE"]
+  require "simplecov"
+  require "simplecov-console"
   SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Console
+    SimpleCov::Formatter::Console,
   ]
   SimpleCov.start
 end

@@ -1,17 +1,17 @@
-require 'pathname'
-require 'json'
-require 'hashie/extensions/method_access'
+require "pathname"
+require "json"
+require "hashie/extensions/method_access"
 
-require 'rspec'
-require 'rspec/core/shared_context'
-require 'chef-vault'
+require "rspec"
+require "rspec/core/shared_context"
+require "chef-vault"
 
 # chef-vault helps manage encrypted data bags using a node's public key
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
     # the version of the gem
-    VERSION = '0.5.0'
+    VERSION = "0.5.0"
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
@@ -41,7 +41,7 @@ class ChefVault
             # return [void]
             # @api private
             def find_vaults(stub_encrypted_data)
-              dbdir = Pathname.new('test') + 'integration' + 'data_bags'
+              dbdir = Pathname.new("test") + "integration" + "data_bags"
               dbdir.each_child do |vault|
                 next unless vault.directory?
                 stub_vault(stub_encrypted_data, vault)
@@ -88,7 +88,7 @@ class ChefVault
 
               # stub vault lookup of each of the vault item keys
               content.each do |k, v|
-                next if 'id' == k
+                next if "id" == k
                 allow(vi).to receive(:[]).with(k).and_return(v)
               end
 
@@ -121,10 +121,10 @@ class ChefVault
             def stub_vault_item_encrypted_data(vault, item, content)
               # stub data bag lookup of each of the vault item keys
               dbi = ChefVault::TestFixtureDataBagItem.new
-              dbi['raw_data'] = content
+              dbi["raw_data"] = content
               content.each_key do |k|
-                next if 'id' == k
-                dbi[k] = { 'encrypted_data' => '...' }
+                next if "id" == k
+                dbi[k] = { "encrypted_data" => "..." }
               end
 
               [vault, vault.to_sym].each do |dbname|

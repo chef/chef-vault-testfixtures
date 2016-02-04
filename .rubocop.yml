@@ -13,6 +13,3 @@ Style/Documentation:
     - 'spec/**/*.rb'
     - lib/chef-vault/test_fixtures/version.rb
     - lib/hoe/markdown.rb
-
-Metrics/CyclomaticComplexity:
-  Max: 7
