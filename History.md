@@ -1,5 +1,14 @@
 # Changelog for chef-vault-testfixtures
 
+## 0.5.1
+
+* Update `hashie` gem dependency to ~> 3.4 to avoid Gem::ConflictError with hashie 3.4.3 installed by ChefDK 0.10.0
+
+```
+`raise_if_conflicts': Unable to activate chef-vault-testfixtures-0.5.0,
+because hashie-3.4.3 conflicts with hashie (~> 2.1) (Gem::ConflictError)
+```
+
 ## 0.5.0
 
 * breaking change: by default, only stub calls to `ChefVault::Item.load(bag, item)` and `Chef::DataBag.load(bag).key?(item_keys)`.  This allows people who are using the JSON files in test/integration/data_bags to stub unencrypted data bag to do so.  See the README for details of how to continue to stub `ChefVault::DataBagItem.load(bag, item)` and return a fake hash.  Reported by [Dru Goradia](https://github.com/dgoradia-atlas))
