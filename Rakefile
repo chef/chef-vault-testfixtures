@@ -12,7 +12,7 @@ begin
     license "apache2"
     extra_deps << ["rspec", "~> 3.1"]
     extra_deps << ["chef-vault", "~> 2.5"]
-    extra_deps << ["hashie", "~> 3.4"]
+    extra_deps << ["hashie", ">= 2.0", "< 4.0"]
     extra_dev_deps << ["chef", "~> 12.0"]
     extra_dev_deps << ["hoe", "~> 3.13"]
     extra_dev_deps << ["hoe-gemspec", "~> 1.0"]
@@ -23,7 +23,7 @@ begin
     extra_dev_deps << ["guard-rake", "~> 0.0"]
     extra_dev_deps << ["guard-rubocop", "~> 1.2"]
     extra_dev_deps << ["chefspec", "~> 4.2"]
-    extra_dev_deps << ["berkshelf", "~> 3.2"]
+    extra_dev_deps << ["berkshelf", "~> 4.0"]
     extra_dev_deps << ["simplecov", "~> 0.9"]
     extra_dev_deps << ["simplecov-console", "~> 0.2"]
     extra_dev_deps << ["yard", "~> 0.8"]
