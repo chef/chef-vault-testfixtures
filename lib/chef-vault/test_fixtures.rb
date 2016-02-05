@@ -11,7 +11,7 @@ class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
     # the version of the gem
-    VERSION = "0.5.1"
+    VERSION = "0.5.2"
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
@@ -96,6 +96,10 @@ class ChefVault
               # via both symbol and string forms of the data bag name
               [vault, vault.to_sym].each do |dbname|
                 allow(ChefVault::Item).to(
+                  receive(:vault?).with(dbname, item).and_return(true)
+                )
+
+                allow(ChefVault::Item).to(
                   receive(:load)
                   .with(dbname, item)
                   .and_return(vi)
@@ -129,9 +133,7 @@ class ChefVault
 
               [vault, vault.to_sym].each do |dbname|
                 allow(Chef::DataBagItem).to(
-                  receive(:load)
-                  .with(dbname, item)
-                  .and_return(dbi)
+                  receive(:load).with(dbname, item).and_return(dbi)
                 )
               end
             end
