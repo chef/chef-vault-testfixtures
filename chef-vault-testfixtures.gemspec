@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.5.1.20160204143129 ruby lib
+# stub: chef-vault-testfixtures 0.5.2.20160205150644 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "chef-vault-testfixtures"
-  s.version = "0.5.1.20160204143129"
+  s.version = "0.5.2.20160205150644"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["James FitzGibbon"]
-  s.date = "2016-02-04"
+  s.date = "2016-02-05"
   s.description = "chef-vault-testfixtures provides an RSpec shared context that\nstubs access to chef-vault encrypted data bags using the same\nfallback mechanism as the `chef_vault_item` helper from the\n[chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
   s.email = ["james.i.fitzgibbon@nordstrom.com"]
   s.extra_rdoc_files = ["History.md", "Manifest.txt", "README.md"]
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/Nordstrom/chef-vault-testfixtures"
   s.licenses = ["apache2"]
   s.rdoc_options = ["--main", "README.md"]
-  s.rubygems_version = "2.4.5.1"
+  s.rubygems_version = "2.4.8"
   s.summary = "chef-vault-testfixtures provides an RSpec shared context that stubs access to chef-vault encrypted data bags using the same fallback mechanism as the `chef_vault_item` helper from the [chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
 
   if s.respond_to? :specification_version then
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rspec>, ["~> 3.1"])
       s.add_runtime_dependency(%q<chef-vault>, ["~> 2.5"])
-      s.add_runtime_dependency(%q<hashie>, ["< 4.0", ">= 3.0"])
+      s.add_runtime_dependency(%q<hashie>, ["< 4.0", ">= 2.0"])
       s.add_development_dependency(%q<rdoc>, ["~> 4.0"])
       s.add_development_dependency(%q<chef>, ["~> 12.0"])
       s.add_development_dependency(%q<hoe>, ["~> 3.13"])
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rspec>, ["~> 3.1"])
       s.add_dependency(%q<chef-vault>, ["~> 2.5"])
-      s.add_dependency(%q<hashie>, ["< 4.0", ">= 3.0"])
+      s.add_dependency(%q<hashie>, ["< 4.0", ">= 2.0"])
       s.add_dependency(%q<rdoc>, ["~> 4.0"])
       s.add_dependency(%q<chef>, ["~> 12.0"])
       s.add_dependency(%q<hoe>, ["~> 3.13"])
@@ -62,7 +62,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rspec>, ["~> 3.1"])
     s.add_dependency(%q<chef-vault>, ["~> 2.5"])
-    s.add_dependency(%q<hashie>, ["< 4.0", ">= 3.0"])
+    s.add_dependency(%q<hashie>, ["< 4.0", ">= 2.0"])
     s.add_dependency(%q<rdoc>, ["~> 4.0"])
     s.add_dependency(%q<chef>, ["~> 12.0"])
     s.add_dependency(%q<hoe>, ["~> 3.13"])
