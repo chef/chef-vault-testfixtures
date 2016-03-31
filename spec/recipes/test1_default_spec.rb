@@ -28,4 +28,8 @@ RSpec.describe "test1::default" do
   it "should have the right value for the unencrypted data bag item" do
     expect(chef_run.node.run_state["dbi_wibble"]["wibble"]).to eq(3)
   end
+
+  it "should have the right value for the encrypted data bag item" do
+    expect(chef_run.node.run_state["foo"]["baz"]).to eq(4)
+  end
 end
