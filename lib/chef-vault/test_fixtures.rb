@@ -92,6 +92,10 @@ class ChefVault
                 allow(vi).to receive(:[]).with(k).and_return(v)
               end
 
+              # stub hash conversion as a stopgap to other hash methods
+              allow(vi).to receive(:to_h).with(no_args).and_return(content)
+              allow(vi).to receive(:to_hash).with(no_args).and_return(content)
+
               # stub ChefVault and Chef::DataBag to return the doubles
               # via both symbol and string forms of the data bag name
               [vault, vault.to_sym].each do |dbname|
