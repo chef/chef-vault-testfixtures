@@ -14,7 +14,7 @@ RSpec.describe "test1::default" do
   include ChefVault::TestFixtures.rspec_shared_context(false)
 
   let(:chef_run) do
-    ChefSpec::ServerRunner.new do |_, server|
+    ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |_, server|
       server.create_data_bag(
         "baz", "wibble" => parse_data_bag("baz/wibble.json")
       )

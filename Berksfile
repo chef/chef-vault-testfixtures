@@ -1,3 +1,3 @@
-source 'https://supermarket.chef.io'
+source "https://supermarket.chef.io"
 
-cookbook 'test1', path: 'test/fixtures/cookbooks/test1'
+cookbook "test1", path: "test/fixtures/cookbooks/test1"

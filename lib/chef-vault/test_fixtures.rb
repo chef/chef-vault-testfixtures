@@ -11,7 +11,7 @@ class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
     # the version of the gem
-    VERSION = "0.5.2"
+    VERSION = "0.6.0"
 
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
