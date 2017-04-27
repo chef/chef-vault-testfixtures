@@ -1,10 +1,10 @@
 # chef-vault-testfixtures
 
-* home :: https://github.com/Nordstrom/chef-vault-testfixtures
+* home :: https://github.com/chef/chef-vault-testfixtures
 * license :: [Apache2](http://www.apache.org/licenses/LICENSE-2.0)
 * gem version :: [![Gem Version](https://badge.fury.io/rb/chef-vault-testfixtures.png)](http://badge.fury.io/rb/chef-vault-testfixtures)
-* build status :: [![Build Status](https://travis-ci.org/Nordstrom/chef-vault-testfixtures.png?branch=master)](https://travis-ci.org/Nordstrom/chef-vault-testfixtures)
-* code climate :: [![Code Climate](https://codeclimate.com/github/Nordstrom/chef-vault-testfixtures/badges/gpa.svg)](https://codeclimate.com/github/Nordstrom/chef-vault-testfixtures)
+* build status :: [![Build Status](https://travis-ci.org/chef/chef-vault-testfixtures.png?branch=master)](https://travis-ci.org/chef/chef-vault-testfixtures)
+* code climate :: [![Code Climate](https://codeclimate.com/github/chef/chef-vault-testfixtures/badges/gpa.svg)](https://codeclimate.com/github/chef/chef-vault-testfixtures)
 
 ## DESCRIPTION
 
@@ -15,7 +15,7 @@ fallback mechanism as the `chef_vault_item` helper from the
 
 ## USAGE
 
-[chef-vault](https://github.com/Nordstrom/chef-vault) is a gem to manage
+[chef-vault](https://github.com/chef/chef-vault) is a gem to manage
 distribution and control of keys to decrypt Chef encrypted data bags.
 
 When testing a cookbook that uses chef-vault, encryption is generally
@@ -53,7 +53,8 @@ In a cookbook example:
     RSpec.describe 'my_cookbook::default' do
       include ChefVault::TestFixtures.rspec_shared_context
 
-      let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
+      let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
+        .converge(described_recipe) }
 
       it 'should converge' do
         expect(chef_run).to include_recipe(described_recipe)
@@ -149,7 +150,7 @@ describe 'my_cookbook::default' do
   include ChefVault::TestFixtures.rspec_shared_context
 
   let(:chef_run) do
-    ChefSpec::ServerRunner.new() do |node, server|
+    ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node, server|
       server.create_data_bag('foo', {
         'bar' => parse_data_bag('foo/bar.json')
       })
@@ -187,6 +188,7 @@ James FitzGibbon - james.i.fitzgibbon@nordstrom.com - @jf647
 ## LICENSE
 
 Copyright 2015 Nordstrom, Inc.
+Copyright 2016 Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

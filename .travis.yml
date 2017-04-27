@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - "2.1.6"
-  - "2.2.2"
+  - 2.3.3
+  - 2.4.1
 install: bundle install --binstubs
 env: TRAVIS_BUILD=true

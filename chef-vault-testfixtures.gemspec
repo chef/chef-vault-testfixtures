@@ -2,80 +2,34 @@
 # stub: chef-vault-testfixtures 0.5.2.20160205150644 ruby lib
 
 Gem::Specification.new do |s|
-  s.name = "chef-vault-testfixtures"
-  s.version = "0.5.2.20160205150644"
+  s.name                      = "chef-vault-testfixtures"
+  s.version                   = "0.5.2.20160205150644"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.require_paths = ["lib"]
-  s.authors = ["James FitzGibbon"]
-  s.date = "2016-02-05"
-  s.description = "chef-vault-testfixtures provides an RSpec shared context that\nstubs access to chef-vault encrypted data bags using the same\nfallback mechanism as the `chef_vault_item` helper from the\n[chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
-  s.email = ["james.i.fitzgibbon@nordstrom.com"]
-  s.extra_rdoc_files = ["History.md", "Manifest.txt", "README.md"]
-  s.files = [".rspec", ".rubocop.yml", ".yardopts", "Gemfile", "Guardfile", "History.md", "Manifest.txt", "README.md", "Rakefile", "chef-vault-testfixtures.gemspec", "lib/chef-vault/test_fixtures.rb", "lib/hoe/markdown.rb", "spec/lib/chef-vault/test_fixtures_spec.rb", "spec/spec_helper.rb"]
-  s.homepage = "https://github.com/Nordstrom/chef-vault-testfixtures"
-  s.licenses = ["apache2"]
-  s.rdoc_options = ["--main", "README.md"]
-  s.rubygems_version = "2.4.8"
-  s.summary = "chef-vault-testfixtures provides an RSpec shared context that stubs access to chef-vault encrypted data bags using the same fallback mechanism as the `chef_vault_item` helper from the [chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
+  s.require_paths             = ["lib"]
+  s.authors                   = ["Thom May"]
+  s.email                     = ["thom@chef.io"]
+  s.extra_rdoc_files          = ["History.md", "README.md"]
+  s.homepage                  = "https://github.com/chef/chef-vault-testfixtures"
+  s.files                     = `git ls-files`.split("\n")
+  s.licenses                  = ["apache2"]
+  s.rdoc_options              = ["--main", "README.md"]
+  s.summary                   = "chef-vault-testfixtures provides an RSpec shared context that stubs access to chef-vault encrypted data bags using the same fallback mechanism as the `chef_vault_item` helper from the [chef-vault cookbook](https://supermarket.chef.io/cookbooks/chef-vault)"
+  s.description               = s.summary
+  s.required_ruby_version     = ">= 2.2.0"
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 4
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rspec>, ["~> 3.1"])
-      s.add_runtime_dependency(%q<chef-vault>, ["~> 2.5"])
-      s.add_runtime_dependency(%q<hashie>, ["< 4.0", ">= 2.0"])
-      s.add_development_dependency(%q<rdoc>, ["~> 4.0"])
-      s.add_development_dependency(%q<chef>, ["~> 12.0"])
-      s.add_development_dependency(%q<hoe>, ["~> 3.13"])
-      s.add_development_dependency(%q<hoe-gemspec>, ["~> 1.0"])
-      s.add_development_dependency(%q<rake>, ["~> 10.3"])
-      s.add_development_dependency(%q<guard>, ["~> 2.12"])
-      s.add_development_dependency(%q<guard-rspec>, ["~> 4.2"])
-      s.add_development_dependency(%q<guard-rake>, ["~> 0.0"])
-      s.add_development_dependency(%q<guard-rubocop>, ["~> 1.2"])
-      s.add_development_dependency(%q<chefspec>, ["~> 4.2"])
-      s.add_development_dependency(%q<berkshelf>, ["~> 4.0"])
-      s.add_development_dependency(%q<simplecov>, ["~> 0.9"])
-      s.add_development_dependency(%q<simplecov-console>, ["~> 0.2"])
-      s.add_development_dependency(%q<yard>, ["~> 0.8"])
-    else
-      s.add_dependency(%q<rspec>, ["~> 3.1"])
-      s.add_dependency(%q<chef-vault>, ["~> 2.5"])
-      s.add_dependency(%q<hashie>, ["< 4.0", ">= 2.0"])
-      s.add_dependency(%q<rdoc>, ["~> 4.0"])
-      s.add_dependency(%q<chef>, ["~> 12.0"])
-      s.add_dependency(%q<hoe>, ["~> 3.13"])
-      s.add_dependency(%q<hoe-gemspec>, ["~> 1.0"])
-      s.add_dependency(%q<rake>, ["~> 10.3"])
-      s.add_dependency(%q<guard>, ["~> 2.12"])
-      s.add_dependency(%q<guard-rspec>, ["~> 4.2"])
-      s.add_dependency(%q<guard-rake>, ["~> 0.0"])
-      s.add_dependency(%q<guard-rubocop>, ["~> 1.2"])
-      s.add_dependency(%q<chefspec>, ["~> 4.2"])
-      s.add_dependency(%q<berkshelf>, ["~> 4.0"])
-      s.add_dependency(%q<simplecov>, ["~> 0.9"])
-      s.add_dependency(%q<simplecov-console>, ["~> 0.2"])
-      s.add_dependency(%q<yard>, ["~> 0.8"])
-    end
-  else
-    s.add_dependency(%q<rspec>, ["~> 3.1"])
-    s.add_dependency(%q<chef-vault>, ["~> 2.5"])
-    s.add_dependency(%q<hashie>, ["< 4.0", ">= 2.0"])
-    s.add_dependency(%q<rdoc>, ["~> 4.0"])
-    s.add_dependency(%q<chef>, ["~> 12.0"])
-    s.add_dependency(%q<hoe>, ["~> 3.13"])
-    s.add_dependency(%q<hoe-gemspec>, ["~> 1.0"])
-    s.add_dependency(%q<rake>, ["~> 10.3"])
-    s.add_dependency(%q<guard>, ["~> 2.12"])
-    s.add_dependency(%q<guard-rspec>, ["~> 4.2"])
-    s.add_dependency(%q<guard-rake>, ["~> 0.0"])
-    s.add_dependency(%q<guard-rubocop>, ["~> 1.2"])
-    s.add_dependency(%q<chefspec>, ["~> 4.2"])
-    s.add_dependency(%q<berkshelf>, ["~> 4.0"])
-    s.add_dependency(%q<simplecov>, ["~> 0.9"])
-    s.add_dependency(%q<simplecov-console>, ["~> 0.2"])
-    s.add_dependency(%q<yard>, ["~> 0.8"])
-  end
+  s.add_runtime_dependency       "rspec", "~> 3.4"
+  s.add_runtime_dependency       "chef-vault", "~> 3"
+  s.add_runtime_dependency       "hashie", "< 4.0", ">= 2.0"
+  s.add_development_dependency   "rdoc"
+  s.add_development_dependency   "chef", ">= 12.9"
+  s.add_development_dependency   "rake", "~> 11.0"
+  s.add_development_dependency   "guard"
+  s.add_development_dependency   "guard-rspec"
+  s.add_development_dependency   "guard-rake"
+  s.add_development_dependency   "guard-rubocop"
+  s.add_development_dependency   "chefspec"
+  s.add_development_dependency   "berkshelf"
+  s.add_development_dependency   "simplecov"
+  s.add_development_dependency   "simplecov-console"
+  s.add_development_dependency   "yard"
 end
