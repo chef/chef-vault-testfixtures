@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name                      = "chef-vault-testfixtures"
-  s.version                   = "0.5.2.20160205150644"
+  s.version                   = "3.0.0"
 
   s.require_paths             = ["lib"]
   s.authors                   = ["Thom May"]
