@@ -44,6 +44,11 @@ RSpec.describe ChefVault::TestFixtures do
       expect(item1["baz"]).to eq(item2["baz"])
     end
 
+    it "should check both smoke and integration for a vault" do
+      item = ChefVault::Item.load("canteloupe", "foo")
+      item["cat"] == "cat"
+    end
+
     it "should allow and ignore an attempt to change a vault" do
       item = ChefVault::Item.load("bar", "foo")
       item["foo"] = "foo"

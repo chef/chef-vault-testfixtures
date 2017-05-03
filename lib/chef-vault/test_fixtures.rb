@@ -6,13 +6,12 @@ require "rspec"
 require "rspec/core/shared_context"
 require "chef-vault"
 
+require "chef-vault/test_fixtures_version"
+
 # chef-vault helps manage encrypted data bags using a node's public key
 class ChefVault
   # dynamic RSpec contexts for cookbooks that use chef-vault
   class TestFixtures
-    # the version of the gem
-    VERSION = "0.6.0"
-
     # dynamically creates a memoized RSpec shared context
     # that when included into an example group will stub
     # ChefVault::Item for each of the defined vaults. The
@@ -42,9 +41,13 @@ class ChefVault
             # @api private
             def find_vaults(stub_encrypted_data)
               dbdir = Pathname.new("test") + "integration" + "data_bags"
-              dbdir.each_child do |vault|
-                next unless vault.directory?
-                stub_vault(stub_encrypted_data, vault)
+              smokedir = Pathname.new("test") + "smoke" + "default" + "data_bags"
+              [ dbdir, smokedir ].each do |dir|
+                next unless dir.directory?
+                dir.each_child do |vault|
+                  next unless vault.directory?
+                  stub_vault(stub_encrypted_data, vault)
+                end
               end
             end
 
