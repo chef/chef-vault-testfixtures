@@ -1,9 +1,10 @@
 # -*- encoding: utf-8 -*-
-# stub: chef-vault-testfixtures 0.5.2.20160205150644 ruby lib
+$:.unshift(File.dirname(__FILE__) + "/lib")
+require "chef-vault/test_fixtures_version"
 
 Gem::Specification.new do |s|
   s.name                      = "chef-vault-testfixtures"
-  s.version                   = "3.0.0"
+  s.version                   = ChefVault::TestFixtures::VERSION
 
   s.require_paths             = ["lib"]
   s.authors                   = ["Thom May"]
