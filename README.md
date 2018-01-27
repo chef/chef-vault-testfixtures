@@ -66,7 +66,7 @@ The recipe that the example tests:
     include_recipe 'chef-vault'
     item = chef_vault_item('foo', 'bar')
     file '/tmp/foo' do
-      contents item['password']
+      content item['password']
     end
 
 The helper will call `ChefVault::Item.load`, which will be stubbed using
