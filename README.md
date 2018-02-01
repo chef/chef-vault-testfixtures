@@ -38,18 +38,25 @@ test.
 
 In the file `test/integration/data_bags/foo/bar.json`:
 
+```json
     { "password": "sekrit" }
+```
 
 In your cookbook Gemfile:
 
+```ruby
     gem 'chef-vault-testfixtures', '~> 0.3'
+```
 
 In your cookbook `spec/spec_helper.rb`:
 
+```ruby
     require 'chef-vault/test_fixtures'
+```
 
 In a cookbook example:
 
+```ruby
     RSpec.describe 'my_cookbook::default' do
       include ChefVault::TestFixtures.rspec_shared_context
 
@@ -60,14 +67,17 @@ In a cookbook example:
         expect(chef_run).to include_recipe(described_recipe)
       end
     end
+```
 
 The recipe that the example tests:
 
+```ruby
     include_recipe 'chef-vault'
     item = chef_vault_item('foo', 'bar')
     file '/tmp/foo' do
       content item['password']
     end
+```
 
 The helper will call `ChefVault::Item.load`, which will be stubbed using
 the data bag from the test/integration/data_bags directory.
@@ -80,7 +90,7 @@ encrypted data, then checking for the existence of the `_keys` data bag
 item to go along with the normal item.  The [sensu cookbook](https://github.com/sensu/sensu-chef/blob/35ee3aa6fa4ad578cdf751fe6822e3d2b3890d94/libraries/sensu_helpers.rb#L39-55) is a good example
 of this:
 
-```
+```ruby
 raw_hash = Chef::DataBagItem.load(data_bag_name, item)
 encrypted = raw_hash.detect do |key, value|
   if value.is_a?(Hash)
@@ -105,7 +115,7 @@ item suffixed with `_keys`.  This satisfies the probes that the chef-vault
 cookbook helper uses.  To address the check for the `encrypted_data` key
 that the sensu cookbook uses, pass a true value to `rspec_shared_context`:
 
-```
+```ruby
 RSpec.describe 'my_cookbook::default' do
   include ChefVault::TestFixtures.rspec_shared_context(true)
 end
@@ -115,7 +125,7 @@ Now, when your recipe calls `Chef::DataBagItem.load`, it will
 get back a hash with the same keys as the JSON file, but values which are
 hashes of the form:
 
-```
+```ruby
 {
   encrypted_data => '...'
 }
@@ -133,11 +143,11 @@ populate an unencrypted data bag from the same JSON files:
 
 In `spec/spec_helper.rb`:
 
-```
+```ruby
 require 'chef-vault/test_fixtures'
 require 'json'
 
-def parse_data_bag (path)
+def parse_data_bag(path)
   data_bags_path = File.expand_path(File.join(File.dirname(__FILE__), '../test/integration/data_bags'))
   return JSON.parse(File.read("#{data_bags_path}/#{path}"))
 end
@@ -145,8 +155,8 @@ end
 
 In your test:
 
-```
-describe 'my_cookbook::default' do
+```ruby
+RSpec.describe 'my_cookbook::default' do
   include ChefVault::TestFixtures.rspec_shared_context
 
   let(:chef_run) do
