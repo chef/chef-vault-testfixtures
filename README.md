@@ -2,8 +2,8 @@
 
 * home :: https://github.com/chef/chef-vault-testfixtures
 * license :: [Apache2](http://www.apache.org/licenses/LICENSE-2.0)
-* gem version :: [![Gem Version](https://badge.fury.io/rb/chef-vault-testfixtures.png)](http://badge.fury.io/rb/chef-vault-testfixtures)
-* build status :: [![Build Status](https://travis-ci.org/chef/chef-vault-testfixtures.png?branch=master)](https://travis-ci.org/chef/chef-vault-testfixtures)
+* gem version :: [![Gem Version](https://badge.fury.io/rb/chef-vault-testfixtures.svg)](http://badge.fury.io/rb/chef-vault-testfixtures)
+* build status :: [![Build Status](https://travis-ci.org/chef/chef-vault-testfixtures.svg?branch=master)](https://travis-ci.org/chef/chef-vault-testfixtures)
 * code climate :: [![Code Climate](https://codeclimate.com/github/chef/chef-vault-testfixtures/badges/gpa.svg)](https://codeclimate.com/github/chef/chef-vault-testfixtures)
 
 ## DESCRIPTION
