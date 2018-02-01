@@ -39,44 +39,44 @@ test.
 In the file `test/integration/data_bags/foo/bar.json`:
 
 ```json
-    { "password": "sekrit" }
+{ "password": "sekrit" }
 ```
 
 In your cookbook Gemfile:
 
 ```ruby
-    gem 'chef-vault-testfixtures', '~> 0.3'
+gem 'chef-vault-testfixtures', '~> 0.3'
 ```
 
 In your cookbook `spec/spec_helper.rb`:
 
 ```ruby
-    require 'chef-vault/test_fixtures'
+require 'chef-vault/test_fixtures'
 ```
 
 In a cookbook example:
 
 ```ruby
-    RSpec.describe 'my_cookbook::default' do
-      include ChefVault::TestFixtures.rspec_shared_context
+RSpec.describe 'my_cookbook::default' do
+  include ChefVault::TestFixtures.rspec_shared_context
 
-      let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
-        .converge(described_recipe) }
+  let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
+    .converge(described_recipe) }
 
-      it 'should converge' do
-        expect(chef_run).to include_recipe(described_recipe)
-      end
-    end
+  it 'should converge' do
+    expect(chef_run).to include_recipe(described_recipe)
+  end
+end
 ```
 
 The recipe that the example tests:
 
 ```ruby
-    include_recipe 'chef-vault'
-    item = chef_vault_item('foo', 'bar')
-    file '/tmp/foo' do
-      content item['password']
-    end
+include_recipe 'chef-vault'
+item = chef_vault_item('foo', 'bar')
+file '/tmp/foo' do
+  content item['password']
+end
 ```
 
 The helper will call `ChefVault::Item.load`, which will be stubbed using
