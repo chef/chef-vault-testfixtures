@@ -85,3 +85,17 @@ RSpec.describe ChefVault::TestFixtures do
     end
   end
 end
+
+RSpec.describe ChefVault::TestFixtures do
+  describe "with a custom data bags path" do
+    ChefVault::TestFixtures.clear_context
+    include ChefVault::TestFixtures.rspec_shared_context(
+      custom_data_bags_path: 'test/custom/data_bags'
+    )
+
+    it "should load data bags from a custom path" do
+      bar = ChefVault::Item.load("foobar", "foo")["bar"]
+      expect(bar).to eq(42)
+    end
+  end
+end

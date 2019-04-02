@@ -72,6 +72,12 @@ The recipe that the example tests:
 The helper will call `ChefVault::Item.load`, which will be stubbed using
 the data bag from the test/integration/data_bags directory.
 
+To set a custom folder from where to load the data bags, you can
+use the :custom_data_bags_path parameter when calling rspec_shared_context:
+
+    RSpec.describe 'my_cookbook::default' do
+      include ChefVault::TestFixtures.rspec_shared_context(custom_data_bags_path: "path/to/data_bags")
+
 ## VAULT PROBING
 
 Some recipes and helpers attempt to determine if a data bag is a vault

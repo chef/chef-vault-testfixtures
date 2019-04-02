@@ -23,13 +23,20 @@ class ChefVault
       # created a shared RSpec context that stubs calls to ChefVault::Item.load
       # @param stub_encrypted_data [Boolean] whether to also stub calls to
       #   Chef::DataBagItem.load
+      # @param custom_data_bags_path [String] path to a custom data bags folder
       # @return [Module] a shared context to include in your example groups
-      def rspec_shared_context(stub_encrypted_data = false)
+      def rspec_shared_context(stub_encrypted_data = false,
+                               custom_data_bags_path: nil)
         @context ||= begin
           Module.new do
             extend RSpec::Core::SharedContext
 
-            before { find_vaults(stub_encrypted_data) }
+            before do
+              unless custom_data_bags_path.nil?
+                custom_data_bags_path = Pathname.new(custom_data_bags_path)
+              end
+              find_vaults(stub_encrypted_data, custom_data_bags_path)
+            end
 
             private
 
@@ -37,12 +44,14 @@ class ChefVault
             # each as a vault
             # @param stub_encrypted_data [Boolean] whether to also stub calls to
             #   Chef::DataBagItem.load
+            # @param custom_data_bags_path [Pathname] path to a custom data bags
+            # folder
             # return [void]
             # @api private
-            def find_vaults(stub_encrypted_data)
+            def find_vaults(stub_encrypted_data, custom_data_bags_path)
               dbdir = Pathname.new("test") + "integration" + "data_bags"
               smokedir = Pathname.new("test") + "smoke" + "default" + "data_bags"
-              [ dbdir, smokedir ].each do |dir|
+              [ dbdir, smokedir, custom_data_bags_path ].compact.each do |dir|
                 next unless dir.directory?
                 dir.each_child do |vault|
                   next unless vault.directory?
