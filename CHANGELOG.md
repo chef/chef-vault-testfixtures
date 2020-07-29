@@ -1,16 +1,17 @@
 # chef-vault-testfixtures Change Log
 
-<!-- latest_release 3.0.2 -->
-## [v3.0.2](https://github.com/chef/chef-vault-testfixtures/tree/v3.0.2) (2020-07-29)
+<!-- latest_release 3.0.3 -->
+## [v3.0.3](https://github.com/chef/chef-vault-testfixtures/tree/v3.0.3) (2020-07-29)
 
 #### Merged Pull Requests
-- Resolve chefstyle warnings and add buildkite verification [#35](https://github.com/chef/chef-vault-testfixtures/pull/35) ([tas50](https://github.com/tas50))
+- Only ship the files we need in the gem + ship license file [#36](https://github.com/chef/chef-vault-testfixtures/pull/36) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 <!-- release_rollup since=3.0.1 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Only ship the files we need in the gem + ship license file [#36](https://github.com/chef/chef-vault-testfixtures/pull/36) ([tas50](https://github.com/tas50)) <!-- 3.0.3 -->
 - Resolve chefstyle warnings and add buildkite verification [#35](https://github.com/chef/chef-vault-testfixtures/pull/35) ([tas50](https://github.com/tas50)) <!-- 3.0.2 -->
 <!-- release_rollup -->
 
