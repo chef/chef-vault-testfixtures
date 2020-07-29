@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 $:.unshift(File.dirname(__FILE__) + "/lib")
 require "chef-vault/test_fixtures_version"
 

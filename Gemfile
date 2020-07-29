@@ -1,6 +1,6 @@
-source 'https://rubygems.org/'
+source "https://rubygems.org/"
 
-gem "chefstyle", git: "https://github.com/chef/chefstyle.git"
+gem "chefstyle", "= 1.2.0"
 
 gemspec
 

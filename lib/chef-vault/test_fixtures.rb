@@ -44,8 +44,10 @@ class ChefVault
               smokedir = Pathname.new("test") + "smoke" + "default" + "data_bags"
               [ dbdir, smokedir ].each do |dir|
                 next unless dir.directory?
+
                 dir.each_child do |vault|
                   next unless vault.directory?
+
                   stub_vault(stub_encrypted_data, vault)
                 end
               end
@@ -64,8 +66,10 @@ class ChefVault
               db = {}
               vault.each_child do |e|
                 next unless e.file?
+
                 m = e.basename.to_s.downcase.match(/(.+)\.json/i)
                 next unless m
+
                 content = JSON.parse(e.read)
                 vaultname = vault.basename.to_s
                 stub_vault_item(vaultname, m[1], content, db)
@@ -92,6 +96,7 @@ class ChefVault
               # stub vault lookup of each of the vault item keys
               content.each do |k, v|
                 next if "id" == k
+
                 allow(vi).to receive(:[]).with(k).and_return(v)
               end
 
@@ -135,6 +140,7 @@ class ChefVault
               dbi["raw_data"] = content
               content.each_key do |k|
                 next if "id" == k
+
                 dbi[k] = { "encrypted_data" => "..." }
               end
 
