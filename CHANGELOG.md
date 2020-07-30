@@ -1,25 +1,23 @@
 # chef-vault-testfixtures Change Log
 
-<!-- latest_release 3.1.1 -->
-## [v3.1.1](https://github.com/chef/chef-vault-testfixtures/tree/v3.1.1) (2020-07-30)
-
-#### Merged Pull Requests
-- Update badges, add CoC doc and contributing doc [#38](https://github.com/chef/chef-vault-testfixtures/pull/38) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=3.0.1 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Update badges, add CoC doc and contributing doc [#38](https://github.com/chef/chef-vault-testfixtures/pull/38) ([tas50](https://github.com/tas50)) <!-- 3.1.1 -->
-- Require Ruby 2.5+ / allow for chef-vault 4.x [#37](https://github.com/chef/chef-vault-testfixtures/pull/37) ([tas50](https://github.com/tas50)) <!-- 3.1.0 -->
-- README: Use SVG badges [#29](https://github.com/chef/chef-vault-testfixtures/pull/29) ([olleolleolle](https://github.com/olleolleolle)) <!-- 3.0.4 -->
-- Only ship the files we need in the gem + ship license file [#36](https://github.com/chef/chef-vault-testfixtures/pull/36) ([tas50](https://github.com/tas50)) <!-- 3.0.3 -->
-- Resolve chefstyle warnings and add buildkite verification [#35](https://github.com/chef/chef-vault-testfixtures/pull/35) ([tas50](https://github.com/tas50)) <!-- 3.0.2 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.1.1](https://github.com/chef/chef-vault-testfixtures/tree/v3.1.1) (2020-07-30)
+
+#### Merged Pull Requests
+- Resolve chefstyle warnings and add buildkite verification [#35](https://github.com/chef/chef-vault-testfixtures/pull/35) ([tas50](https://github.com/tas50))
+- Only ship the files we need in the gem + ship license file [#36](https://github.com/chef/chef-vault-testfixtures/pull/36) ([tas50](https://github.com/tas50))
+- README: Use SVG badges [#29](https://github.com/chef/chef-vault-testfixtures/pull/29) ([olleolleolle](https://github.com/olleolleolle))
+- Require Ruby 2.5+ / allow for chef-vault 4.x [#37](https://github.com/chef/chef-vault-testfixtures/pull/37) ([tas50](https://github.com/tas50))
+- Update badges, add CoC doc and contributing doc [#38](https://github.com/chef/chef-vault-testfixtures/pull/38) ([tas50](https://github.com/tas50))
 <!-- latest_stable_release -->
+
+
 
 ## 0.5.1
 
