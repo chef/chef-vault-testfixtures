@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency       "rspec", "~> 3.4"
   s.add_runtime_dependency       "chef-vault", ">= 3", "< 5" # validate 5 if we release that
-  s.add_runtime_dependency       "hashie", "< 4.0", ">= 2.0"
+  s.add_runtime_dependency       "hashie", "< 5.0", ">= 2.0"
 end
