@@ -1,20 +1,18 @@
 # chef-vault-testfixtures Change Log
 
-<!-- latest_release 3.1.2 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v3.1.2](https://github.com/chef/chef-vault-testfixtures/tree/v3.1.2) (2021-07-05)
 
 #### Merged Pull Requests
 - Relaxed Hashi upper bound to &lt; 5 [#40](https://github.com/chef/chef-vault-testfixtures/pull/40) ([wduncanfraser](https://github.com/wduncanfraser))
-<!-- latest_release -->
-
-<!-- release_rollup since=3.1.1 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Relaxed Hashi upper bound to &lt; 5 [#40](https://github.com/chef/chef-vault-testfixtures/pull/40) ([wduncanfraser](https://github.com/wduncanfraser)) <!-- 3.1.2 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v3.1.1](https://github.com/chef/chef-vault-testfixtures/tree/v3.1.1) (2020-07-30)
 
 #### Merged Pull Requests
@@ -23,7 +21,6 @@
 - README: Use SVG badges [#29](https://github.com/chef/chef-vault-testfixtures/pull/29) ([olleolleolle](https://github.com/olleolleolle))
 - Require Ruby 2.5+ / allow for chef-vault 4.x [#37](https://github.com/chef/chef-vault-testfixtures/pull/37) ([tas50](https://github.com/tas50))
 - Update badges, add CoC doc and contributing doc [#38](https://github.com/chef/chef-vault-testfixtures/pull/38) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 
 
